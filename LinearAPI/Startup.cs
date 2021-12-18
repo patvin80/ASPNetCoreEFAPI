@@ -34,9 +34,14 @@ namespace LinearAPI
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddControllers();
+            services.AddHealthChecks();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "LinearAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Title = "LinearAPI", 
+                    Version = "v1",
+                    Description="Web API Endpoint created in MVC"
+                });
                 c.EnableAnnotations();
             });
 
@@ -61,6 +66,7 @@ namespace LinearAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
 
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
