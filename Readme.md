@@ -12,8 +12,10 @@
   }
 ```
 * The combination of first name, last name and email address should be unique.
+	```
 	The API Returns an Error Code stating a Bad Request when the Email Address matches.
 	Returns Status 400 with a message Duplicate Employee Found.
+	```
 * The application should start with some employees added.
 * Provide API documentation (like Swagger) to interact with the REST endpoints.
 
