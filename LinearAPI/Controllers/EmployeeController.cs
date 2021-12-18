@@ -28,8 +28,19 @@ namespace LinearAPI.Controllers
             _repository = repo;
             _logger = logger;
         }
+
         // GET: api/<EmployeeController>
+        /// <summary>
+        /// Retrieves all employees
+        /// </summary>
+        /// <response code="200">Employees retrieved</response>
+        /// <response code="404">No Employees Found</response>
         [HttpGet]
+        [SwaggerOperation(
+            Summary = "Retrieves all Employees"
+        )]
+        [ProducesResponseType(typeof(IEnumerable<Employee>), 200)]
+        [ProducesResponseType(404)]
         public ActionResult<IEnumerable<Employee>> Get()
         {
             IList<Employee> employees = null;
@@ -46,15 +57,16 @@ namespace LinearAPI.Controllers
         }
 
         // GET api/<EmployeeController>/5
-
         /// <summary>
         /// Retrieves a specific employee by unique id
         /// </summary>
-        /// <remarks>Awesomeness!</remarks>
         /// <param name="id" example="123">Employee id</param>
         /// <response code="200">Employee retrieved</response>
         /// <response code="404">Employee not found</response>
         [HttpGet("{id}")]
+        [SwaggerOperation(
+            Summary = "Retrieves a Unique Employee"
+        )]
         [ProducesResponseType(typeof(Employee), 200)]
         [ProducesResponseType(404)]
         public ActionResult<Employee> Get(int id)
@@ -79,6 +91,9 @@ namespace LinearAPI.Controllers
             Summary = "Creates a new Employee",
             Description = "Employee Name, Email and Age are Unique"
         )]
+        [ProducesResponseType(typeof(Employee), 200)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Post([FromBody] Employee emp)
         {
             if (emp == null)
@@ -123,6 +138,8 @@ namespace LinearAPI.Controllers
             Summary = "Updates an existing Employee",
             Description = "Note: Employee Name, Email and Age are Unique"
         )]
+        [ProducesResponseType(typeof(Employee), 200)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Employee> Put(int id, [FromBody] Employee emp)
         {
 
