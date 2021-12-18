@@ -34,7 +34,7 @@ Swagger Endpoint locally is accessible at https://localhost:44390/swagger/index.
 * * <s>Send the DB script to add the schemas</s>
 * * <s>Use in-memory database</s>
 * Use Dependency Injection
-* * Included Logger as a dependency injection in the Employee Controller.
+* * Included EmployeeRepository which is the database access service as a dependency injection in the services and used in Employee Controller.
 * Add at least few unit tests
 * * Test cases have been added with Moq framework and also using actual database integration.
 * Simulate an API Delay
@@ -50,6 +50,6 @@ Unit Testing and Regression Testing included
 # Configuration
 | Name | Purpose | Default |
 | -- | -- | -- |
-| WipeDB | Clean the DB before every run | True |
-| ApiDelayDuration | Simulate the delay | 5000 |
+| WipeDB | Clean the DB before every run | true |
+| EnableApiDelay | Simulate the delay | false|
 

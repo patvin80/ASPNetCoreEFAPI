@@ -13,7 +13,7 @@ namespace LinearAPI.Filters
         private int _delayInMs;
         public DelayFilter(IConfiguration configuration)
         {
-            _delayInMs = configuration.GetValue<int>("ApiDelayDuration", 0);
+            _delayInMs = Random.Shared.Next(5000);
         }
 
         async Task IAsyncActionFilter.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
