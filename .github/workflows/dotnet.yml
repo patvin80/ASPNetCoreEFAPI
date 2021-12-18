@@ -13,14 +13,15 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-    - name: List Directory and check contents
-      run: | 
-        pwd
-        dir
-        cd LinearAPI
     - name: Restore dependencies
-      run: dotnet restore
+      run: | 
+        cd LinearAPI
+        dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: | 
+        cd LinearAPI
+        dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: | 
+        cd LinearAPI
+        dotnet test --no-build --verbosity normal
