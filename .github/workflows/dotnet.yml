@@ -1,0 +1,27 @@
+name: .NET Build and Test
+
+on: [push]
+
+jobs:
+  BuildAndTest:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: | 
+        cd LinearAPI
+        dotnet restore
+    - name: Build
+      run: | 
+        cd LinearAPI
+        dotnet build --no-restore
+    - name: MOQ API Tests
+      run: | 
+        cd LinearAPI
+        dotnet test --filter LinearAPITests.EmployeeControllerMoqTests --no-build --verbosity normal
