@@ -17,7 +17,14 @@
 	Returns Status 400 with a message Duplicate Employee Found.
 	```
 * The application should start with some employees added.
+```
+DB Initializer creates the employees. 
+WipeDB clean can be used to wipe the employees.
+```
 * Provide API documentation (like Swagger) to interact with the REST endpoints.
+```
+Swagger Endpoint locally is accessible at https://localhost:44390/swagger/index.html
+```
 
 # Technical Requirements
 
