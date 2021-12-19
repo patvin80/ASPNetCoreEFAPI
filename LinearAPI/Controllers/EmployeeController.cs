@@ -36,6 +36,11 @@ namespace LinearAPI.Controllers
         /// <response code="200">Employees retrieved</response>
         /// <response code="404">No Employees Found</response>
         [HttpGet]
+        [SwaggerOperation(
+            Summary = "Retrieves all Employees"
+        )]
+        [ProducesResponseType(typeof(IEnumerable<Employee>), 200)]
+        [ProducesResponseType(404)]
         public ActionResult<IEnumerable<Employee>> Get()
         {
             IList<Employee> employees = null;
