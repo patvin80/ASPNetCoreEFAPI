@@ -46,7 +46,7 @@ namespace LinearAPI.Controllers
             IList<Employee> employees = null;
 
             employees = _repository.Employees.ToList();
-            _logger.LogInformation("Log message in the Get All method");
+
 
             if (employees.Count == 0)
             {

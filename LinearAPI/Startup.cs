@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using LinearAPI.Service;
+using LinearAPI.Filters;
 
 namespace LinearAPI
 {
@@ -33,7 +34,17 @@ namespace LinearAPI
             services.AddDbContext<EmployeeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            services.AddControllers();
+            if (Boolean.Parse(Configuration["EnableApiDelay"])){
+                services.AddControllers(options =>
+                {
+                    options.Filters.Add(typeof(DelayFilter));
+                });
+            }
+            else
+            {
+                services.AddControllers();
+            }
+
             services.AddHealthChecks();
             services.AddSwaggerGen(c =>
             {
