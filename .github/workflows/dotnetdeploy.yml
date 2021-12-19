@@ -28,7 +28,8 @@ jobs:
         dotnet build --no-restore
     - name: Run API
       run: | 
-        cd LinearAPI dotnet run &
+        cd LinearAPI 
+        dotnet run &
         sleep 15
         output=$(curl -Is localhost:5000/healthcheck | grep HTTP | cut -d ' ' -f2)
         echo $output
