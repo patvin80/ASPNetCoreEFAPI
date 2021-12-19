@@ -8,7 +8,7 @@ on:
     - master
 
 jobs:
-  BuildAndTest:
+  BuildAndRun:
 
     runs-on: ubuntu-latest
 
