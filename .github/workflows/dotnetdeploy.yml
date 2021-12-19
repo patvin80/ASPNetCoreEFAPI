@@ -2,7 +2,7 @@ name: .NET Run
 # Trigger the workflow on push or pull request,
 # but only for the main branch
 on:   
-  pull_request:
+  push:
     branches:
     - main
     - master
@@ -28,7 +28,7 @@ jobs:
         dotnet build --no-restore
     - name: Run API
       run: | 
-        dotnet run &
-        sleep 5000
+        cd LinearAPI dotnet run &
+        sleep 15
         output=$(curl -Is localhost:5000/healthcheck | grep HTTP | cut -d ' ' -f2)
         echo $output
