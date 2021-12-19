@@ -30,6 +30,7 @@ namespace LinearAPI.Controllers
         }
         // GET: api/<EmployeeController>
         [HttpGet]
+
         public ActionResult<IEnumerable<Employee>> Get()
         {
             IList<Employee> employees = null;

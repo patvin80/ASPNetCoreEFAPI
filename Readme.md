@@ -29,14 +29,20 @@
 * Use Dependency Injection
 * * Included Logger as a dependency injection in the Employee Controller.
 * Add at least few unit tests
-Test cases have been added with Moq framework and also using actual database integration.
+* * Test cases have been added with Moq framework and also using actual database integration.
+* Simulate an API Delay
+* * Using the Article here - https://robertwray.co.uk/blog/adding-a-delay-to-asp-net-core-web-api-methods-to-simulate-slow-or-erratic-networks
 
 # Testing 
-Controller Test cases are MOQ
-Service Test cases actually rely on database connectivity.
+Unit Testing and Regression Testing included
+* Controller Test cases are MOQ
+* Service Test cases actually rely on database connectivity.
+* Developer can run the test cases using dotnet test
+* Pipeline only runs the MOQ Test cases using dotnet test --filter LinearAPITest.EmployeeServiceTests
 
 # Configuration
 | Name | Purpose | Default |
 | -- | -- | -- |
 | WipeDB | Clean the DB before every run | True |
+| ApiDelayDuration | Simulate the delay | 5000 |
 
