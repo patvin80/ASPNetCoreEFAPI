@@ -40,6 +40,34 @@ Swagger Endpoint locally is accessible at https://localhost:44390/swagger/index.
 * Simulate an API Delay
 * * Using the Article here - https://robertwray.co.uk/blog/adding-a-delay-to-asp-net-core-web-api-methods-to-simulate-slow-or-erratic-networks
 
+# Installation
+
+## Pre-requisites
+* Dotnet Core 6.0 is required.</br>
+Justification: Since this is a brand new development decided to go for latest frameworks.
+Download and install dotnet core 6 - https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+
+## Developer Instruction
+### Visual Studio
+1. Clone the repository https://github.com/patvin80/ASPNetCoreEFAPI.git
+2. Open LinearAPI.sln
+3. Build the Solution
+3. Start using the IISExpress
+4. Interact with the swagger
+5. Run Test cases using the Test Explorer
+
+### Command Prompt
+```
+git clone https://github.com/patvin80/ASPNetCoreEFAPI.git
+cd LinearAPI
+dotnet restore
+dotnet build
+dotnet test
+dotnet run
+```
+
+Open in Browser - http://localhost:5000/health
+
 # Testing 
 Unit Testing and Regression Testing included
 * Controller Test cases are MOQ
@@ -47,9 +75,23 @@ Unit Testing and Regression Testing included
 * Developer can run the test cases using dotnet test
 * Pipeline only runs the MOQ Test cases using dotnet test --filter LinearAPITest.EmployeeServiceTests
 
+# Pipelines
+## Build and Test Pipeline
+GitHub actions enabled to build and run the test cases when code is checked in.
+
 # Configuration
 | Name | Purpose | Default |
 | -- | -- | -- |
 | WipeDB | Clean the DB before every run | true |
 | EnableApiDelay | Simulate the delay | false|
 
+# References
+* https://www.hosting.work/aspnet-core-web-api-xunit-moq-unit-testing/#setup
+* https://www.hosting.work/aspnet-core-xunit-ef-core-unit-testing/
+* https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/crud?view=aspnetcore-6.0
+* Simulate Latency - https://robertwray.co.uk/blog/adding-a-delay-to-asp-net-core-web-api-methods-to-simulate-slow-or-erratic-networks
+* Wipe DB - https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.storage.relationaldatabasecreator.ensuredeleted?view=efcore-5.0
+* HealthCheck - https://www.c-sharpcorner.com/article/health-check-using-asp-net-core/
+* Swagger - https://github.com/domaindrivendev/Swashbuckle.AspNetCore
+* Github Actions - https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+* Repository for DAL - https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
