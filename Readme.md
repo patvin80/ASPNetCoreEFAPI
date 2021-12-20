@@ -85,3 +85,12 @@ GitHub actions enabled to build and run the test cases when code is checked in.
 | WipeDB | Clean the DB before every run | true |
 | EnableApiDelay | Simulate the delay | false|
 
+# References
+* https://www.hosting.work/aspnet-core-web-api-xunit-moq-unit-testing/#setup
+* https://www.hosting.work/aspnet-core-xunit-ef-core-unit-testing/
+* https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/crud?view=aspnetcore-6.0
+* Simulate Latency - https://robertwray.co.uk/blog/adding-a-delay-to-asp-net-core-web-api-methods-to-simulate-slow-or-erratic-networks
+* Wipe DB - https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.storage.relationaldatabasecreator.ensuredeleted?view=efcore-5.0
+* HealthCheck - https://www.c-sharpcorner.com/article/health-check-using-asp-net-core/
+* Swagger - https://github.com/domaindrivendev/Swashbuckle.AspNetCore
+* Github Actions - https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
