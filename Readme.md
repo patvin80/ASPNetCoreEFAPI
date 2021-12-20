@@ -94,3 +94,4 @@ GitHub actions enabled to build and run the test cases when code is checked in.
 * HealthCheck - https://www.c-sharpcorner.com/article/health-check-using-asp-net-core/
 * Swagger - https://github.com/domaindrivendev/Swashbuckle.AspNetCore
 * Github Actions - https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+* Repository for DAL - https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
