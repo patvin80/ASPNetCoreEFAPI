@@ -140,6 +140,7 @@ namespace LinearAPI.Controllers
         )]
         [ProducesResponseType(typeof(Employee), 200)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<Employee> Put(int id, [FromBody] Employee emp)
         {
 
@@ -147,16 +148,46 @@ namespace LinearAPI.Controllers
             {
                 return BadRequest();
             }
-
+            
             if (id == 0)
             {
                 return NotFound();
             }
-            var savedEmp = _repository.UpdateEmployee(emp);
-            if (savedEmp == null)
-                return NotFound();
-            else
-                return Ok(savedEmp);
+            if (emp.Id == 0)
+                emp.Id = id;
+            try
+            {
+                var savedEmp = _repository.UpdateEmployee(emp);
+                if (savedEmp == null)
+                    return NotFound();
+                else
+                    return Ok(savedEmp);
+            }
+            catch (DbUpdateException dbUpdateEx)
+            {
+                // TODO: A Better Exception Handling mechanism
+                if (dbUpdateEx.InnerException != null && dbUpdateEx.InnerException != null)
+                {
+                    if (dbUpdateEx.InnerException is SqlException sqlException)
+                    {
+                        switch (sqlException.Number)
+                        {
+                            case 2601:  // Unique constraint error
+                                return BadRequest("Duplicate Employee Found");
+                            default:
+                                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+                        }
+                    }
+                    else
+                        return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+                }
+                else
+                    return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Error saving the result");
+            }
         }
 
         // DELETE api/<EmployeeController>/5
